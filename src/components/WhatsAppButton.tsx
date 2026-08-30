@@ -27,7 +27,7 @@ export default function WhatsAppButton({
       href={buildWhatsAppLink(message)}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-sm sm:text-base tracking-wide transition-colors duration-200 ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 font-heading font-semibold text-sm sm:text-base tracking-wide transition-colors duration-200 ${variants[variant]} ${className}`}
     >
       <svg
         aria-hidden="true"

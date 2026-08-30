@@ -1,5 +1,4 @@
-import { navLinks, property, whatsappMessages } from "@/lib/property";
-import WhatsAppButton from "./WhatsAppButton";
+import { navLinks, property } from "@/lib/property";
 
 export default function Footer() {
   return (
@@ -31,11 +30,6 @@ export default function Footer() {
           </p>
           <p className="mt-3 text-sm">WhatsApp</p>
           <p className="text-sm">(11) 98092-7661</p>
-          <div className="mt-4">
-            <WhatsAppButton message={whatsappMessages.default} className="!px-5 !py-2.5 !text-sm">
-              Falar pelo WhatsApp
-            </WhatsAppButton>
-          </div>
         </div>
 
         <div>

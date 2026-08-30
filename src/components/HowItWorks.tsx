@@ -29,7 +29,7 @@ export default function HowItWorks() {
   return (
     <section id="como-funciona" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+        <h2 className="text-center font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
           Como funciona a aquisição da cota?
         </h2>
 
@@ -37,14 +37,14 @@ export default function HowItWorks() {
           {steps.map((step) => (
             <div key={step.number} className="rounded-2xl border border-gray-border bg-white p-6">
               <span className="font-heading text-3xl font-extrabold text-gold">{step.number}</span>
-              <p className="mt-3 font-heading text-lg font-bold text-navy">{step.title}</p>
+              <p className="mt-3 font-heading text-base font-bold text-navy">{step.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">{step.description}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-10 rounded-2xl bg-navy p-6 sm:p-8">
-          <p className="font-heading text-lg font-bold text-white sm:text-xl">
+          <p className="font-heading text-base font-bold text-white sm:text-lg">
             Esta não é uma venda convencional de imóvel pronto.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">

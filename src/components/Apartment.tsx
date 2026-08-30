@@ -19,7 +19,7 @@ export default function Apartment() {
     <section id="apartamento" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+          <h2 className="font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
             Um apartamento pensado para viver com espaço
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">

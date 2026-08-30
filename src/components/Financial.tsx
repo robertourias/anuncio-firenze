@@ -15,7 +15,7 @@ export default function Financial() {
   return (
     <section className="bg-gray-soft py-14 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+        <h2 className="text-center font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
           Condições atuais da cota
         </h2>
 

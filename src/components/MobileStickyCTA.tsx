@@ -33,7 +33,7 @@ export default function MobileStickyCTA() {
         href={buildWhatsAppLink(whatsappMessages.default)}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center rounded-full bg-gold px-5 py-3 font-heading text-sm font-bold text-navy-dark"
+        className="inline-flex items-center justify-center rounded-full bg-gold px-5 py-2.5 font-heading text-sm font-bold text-navy-dark"
       >
         Falar no WhatsApp
       </a>

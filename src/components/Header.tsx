@@ -16,18 +16,41 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    const scrollY = window.scrollY;
+    const { body } = document;
+    const previous = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflowY: body.style.overflowY,
+    };
+
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+    body.style.overflowY = "scroll";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+
     return () => {
-      document.body.style.overflow = "";
+      body.style.position = previous.position;
+      body.style.top = previous.top;
+      body.style.width = previous.width;
+      body.style.overflowY = previous.overflowY;
+      window.scrollTo(0, scrollY);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
 
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
-        scrolled
-          ? "bg-navy/95 backdrop-blur shadow-md"
-          : "bg-navy"
+        scrolled ? "bg-navy/95 backdrop-blur shadow-md" : "bg-navy"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -37,7 +60,7 @@ export default function Header() {
 
         <div className="flex items-center gap-3 sm:gap-4">
           <div className="hidden sm:block">
-            <WhatsAppButton message={whatsappMessages.default} className="!px-5 !py-2.5 !text-sm">
+            <WhatsAppButton message={whatsappMessages.default} className="!px-4 !py-2 !text-sm">
               Falar no WhatsApp
             </WhatsAppButton>
           </div>
@@ -45,17 +68,13 @@ export default function Header() {
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-md text-white"
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-label="Abrir menu"
             aria-expanded={open}
             aria-controls="side-menu"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(true)}
           >
             <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={2}>
-              {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -71,17 +90,36 @@ export default function Header() {
 
       <div
         id="side-menu"
-        className={`fixed inset-y-0 right-0 z-40 h-dvh w-full max-w-xs overflow-y-auto bg-navy-dark shadow-xl transition-transform duration-200 sm:max-w-sm ${
-          open ? "translate-x-0" : "translate-x-full"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        aria-hidden={!open}
+        className={`fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-xs flex-col overflow-y-auto overscroll-contain bg-navy-dark shadow-xl transition-transform duration-200 sm:max-w-sm ${
+          open ? "visible translate-x-0" : "invisible translate-x-full"
         }`}
       >
-        <nav className="flex flex-col gap-1 px-6 py-24" aria-label="Navegação">
+        <div className="flex items-center justify-between border-b border-white/10 px-6 py-3">
+          <span className="font-heading text-base font-bold text-white">Menu</span>
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-md text-white hover:text-gold"
+            aria-label="Fechar menu"
+            onClick={() => setOpen(false)}
+          >
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <nav className="flex flex-col gap-1 px-6 py-6" aria-label="Navegação">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-4 text-lg font-medium text-white/90 hover:text-gold"
+              tabIndex={open ? 0 : -1}
+              className="border-b border-white/10 py-3.5 text-base font-medium text-white/90 hover:text-gold"
             >
               {link.label}
             </a>

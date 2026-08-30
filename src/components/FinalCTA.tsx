@@ -5,7 +5,7 @@ export default function FinalCTA() {
   return (
     <section id="contato" className="bg-navy py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+        <h2 className="font-heading text-xl font-bold text-white sm:text-2xl lg:text-3xl">
           Quer receber todos os detalhes desta cota?
         </h2>
         <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
@@ -13,11 +13,8 @@ export default function FinalCTA() {
           detalhes sobre sorteio e contemplação.
         </p>
 
-        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex justify-center">
           <WhatsAppButton message={whatsappMessages.final}>Falar no WhatsApp</WhatsAppButton>
-          <WhatsAppButton message={whatsappMessages.final} variant="ghost">
-            Solicitar informações
-          </WhatsAppButton>
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-1 border-t border-white/15 pt-8 text-white/85">

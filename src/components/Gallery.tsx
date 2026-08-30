@@ -36,7 +36,7 @@ export default function Gallery() {
   return (
     <section className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+        <h2 className="text-center font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
           Galeria
         </h2>
 

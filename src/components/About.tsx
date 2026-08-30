@@ -26,7 +26,7 @@ export default function About() {
         </div>
 
         <div>
-          <h2 className="font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+          <h2 className="font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
             Conheça o Residencial Parque Firenze
           </h2>
           <ul className="mt-6 space-y-3">

@@ -16,13 +16,13 @@ export default function Location() {
   return (
     <section id="localizacao" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-heading text-2xl font-bold text-navy sm:text-3xl lg:text-4xl">
+        <h2 className="text-center font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
           Localização
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="font-heading text-xl font-bold text-navy">{property.development}</p>
+            <p className="font-heading text-lg font-bold text-navy">{property.development}</p>
             <p className="mt-1 text-base text-gray-600">{property.address}</p>
 
             <ul className="mt-6 space-y-3">
@@ -40,7 +40,7 @@ export default function Location() {
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-navy px-6 py-3.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue sm:text-base"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-navy px-6 py-2.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-blue sm:text-base"
             >
               Abrir no Google Maps
             </a>
