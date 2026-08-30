@@ -2,25 +2,43 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a1f44;
+
+  --color-navy: #0a1f44;
+  --color-navy-dark: #06132b;
+  --color-blue: #1e4e8c;
+  --color-blue-light: #2f6bb8;
+  --color-gold: #d4af37;
+  --color-gold-light: #e8c96a;
+  --color-gray-soft: #f5f6f8;
+  --color-gray-border: #e2e5eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy: var(--color-navy);
+  --color-navy-dark: var(--color-navy-dark);
+  --color-blue: var(--color-blue);
+  --color-blue-light: var(--color-blue-light);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gray-soft: var(--color-gray-soft);
+  --color-gray-border: var(--color-gray-border);
+  --font-heading: var(--font-poppins);
+  --font-sans: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
