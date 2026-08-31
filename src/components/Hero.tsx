@@ -14,7 +14,19 @@ const quickInfo = [
 export default function Hero() {
   return (
     <section id="oportunidade" className="relative overflow-hidden bg-navy">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-20">
+      <Image
+        src="/images/firenze (3).png"
+        alt=""
+        aria-hidden="true"
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-navy/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/45 to-navy/15" />
+
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-20">
         <div className="flex flex-col justify-center">
           <span className="inline-flex w-fit items-center rounded-full bg-gold/15 px-4 py-1.5 text-xs font-bold tracking-wider text-gold ring-1 ring-gold/40">
             OPORTUNIDADE DE COTA
@@ -52,18 +64,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center gap-4">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-2xl">
-            <Image
-              src="/images/predio.png"
-              alt="Fachada do Residencial Parque Firenze"
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-            />
-          </div>
-
+        <div className="flex flex-col justify-center">
           <div className="rounded-2xl bg-white p-5 shadow-xl sm:p-6">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>

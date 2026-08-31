@@ -16,7 +16,7 @@ export default function About() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-xl">
           <Image
-            src="/images/predio.png"
+            src="/images/firenze (5).png"
             alt="Vista geral do Residencial Parque Firenze"
             fill
             loading="lazy"

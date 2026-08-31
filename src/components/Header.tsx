@@ -49,7 +49,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-200 ${
         scrolled ? "bg-navy/95 backdrop-blur shadow-md" : "bg-navy"
       }`}
     >

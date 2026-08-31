@@ -1,40 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
-const images = [
-  {
-    src: "/images/predio.png",
-    alt: "Fachada do Residencial Parque Firenze",
-  },
-  {
-    src: "/images/predio.png",
-    alt: "Vista geral do Residencial Parque Firenze",
-  },
-  {
-    src: "/images/planta.png",
-    alt: "Planta do apartamento de 3 dormitórios",
-  },
+const allImages = [
+  { src: "/images/firenze (1).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (2).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (3).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (4).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (5).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (6).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (7).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (8).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (9).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/firenze (10).png", alt: "Residencial Parque Firenze" },
+  { src: "/images/predio.png", alt: "Fachada do Residencial Parque Firenze" },
+  { src: "/images/planta.png", alt: "Planta do apartamento de 3 dormitórios" },
+  { src: "/images/anuncio.png", alt: "Anúncio do Residencial Parque Firenze" },
 ];
+
+const highlightSrcs = ["/images/firenze (1).png", "/images/firenze (4).png", "/images/firenze (10).png"];
+const highlights = highlightSrcs.map((src) => allImages.find((img) => img.src === src)!);
 
 export default function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (openIndex === null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenIndex(null);
-      if (e.key === "ArrowRight") setOpenIndex((i) => (i === null ? i : (i + 1) % images.length));
-      if (e.key === "ArrowLeft")
-        setOpenIndex((i) => (i === null ? i : (i - 1 + images.length) % images.length));
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [openIndex]);
+  const openAt = (src: string) => {
+    const index = allImages.findIndex((img) => img.src === src);
+    setOpenIndex(index === -1 ? 0 : index);
+  };
 
   return (
-    <section className="py-14 sm:py-20">
+    <section className="py-14 sm:pt-0 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-heading text-xl font-bold text-navy sm:text-2xl lg:text-3xl">
           Galeria
@@ -44,23 +43,23 @@ export default function Gallery() {
         <div className="mt-10 hidden gap-4 sm:grid sm:grid-cols-3">
           <button
             type="button"
-            onClick={() => setOpenIndex(0)}
+            onClick={() => openAt(highlights[0].src)}
             className="group relative col-span-2 row-span-2 aspect-[4/3] overflow-hidden rounded-2xl"
           >
             <Image
-              src={images[0].src}
-              alt={images[0].alt}
+              src={highlights[0].src}
+              alt={highlights[0].alt}
               fill
               loading="lazy"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(min-width: 640px) 66vw, 100vw"
             />
           </button>
-          {images.slice(1).map((img, i) => (
+          {highlights.slice(1).map((img) => (
             <button
               type="button"
               key={img.src}
-              onClick={() => setOpenIndex(i + 1)}
+              onClick={() => openAt(img.src)}
               className="group relative aspect-[4/3] overflow-hidden rounded-2xl"
             >
               <Image
@@ -77,11 +76,11 @@ export default function Gallery() {
 
         {/* Mobile: horizontal carousel */}
         <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:hidden">
-          {images.map((img, i) => (
+          {highlights.map((img) => (
             <button
               type="button"
               key={img.src}
-              onClick={() => setOpenIndex(i)}
+              onClick={() => openAt(img.src)}
               className="relative aspect-[4/3] w-[85%] shrink-0 snap-center overflow-hidden rounded-2xl"
             >
               <Image
@@ -97,39 +96,12 @@ export default function Gallery() {
         </div>
       </div>
 
-      {openIndex !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Galeria em tela cheia"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setOpenIndex(null)}
-        >
-          <button
-            type="button"
-            aria-label="Fechar"
-            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
-            onClick={() => setOpenIndex(null)}
-          >
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          <div
-            className="relative aspect-[4/3] w-full max-w-4xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={images[openIndex].src}
-              alt={images[openIndex].alt}
-              fill
-              className="object-contain"
-              sizes="100vw"
-            />
-          </div>
-        </div>
-      )}
+      <Lightbox
+        open={openIndex !== null}
+        close={() => setOpenIndex(null)}
+        index={openIndex ?? 0}
+        slides={allImages.map((img) => ({ src: img.src, alt: img.alt }))}
+      />
     </section>
   );
 }
