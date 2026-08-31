@@ -1,12 +1,12 @@
-import { formatCurrency, property } from "@/lib/property";
+import { currentTransferValue, formatCurrency, property, quotaUpdate } from "@/lib/property";
 
 const stats = [
   { label: "Grupo", value: String(property.group) },
   { label: "Cota", value: property.quota },
   { label: "Parcelas pagas", value: String(property.paidInstallments) },
   { label: "Parcelas restantes", value: String(property.remainingInstallments) },
-  { label: "Parcela atual", value: formatCurrency(property.currentInstallment) },
-  { label: "Transferência", value: formatCurrency(property.transferValue) },
+  { label: "Parcela atual", value: formatCurrency(quotaUpdate.parcela) },
+  { label: "Transferência", value: formatCurrency(currentTransferValue) },
   { label: "Situação", value: "Aguardando sorteio" },
 ];
 

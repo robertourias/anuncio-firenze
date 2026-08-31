@@ -1,4 +1,4 @@
-import { formatCurrency, property, whatsappMessages } from "@/lib/property";
+import { currentTransferValue, formatCurrency, property, whatsappMessages } from "@/lib/property";
 import WhatsAppButton from "./WhatsAppButton";
 
 export default function FinalCTA() {
@@ -22,7 +22,7 @@ export default function FinalCTA() {
             Grupo {property.group} • Cota {property.quota}
           </p>
           <p className="font-heading text-2xl font-extrabold text-gold">
-            {formatCurrency(property.transferValue)}
+            {formatCurrency(currentTransferValue)}
           </p>
           <p className="text-sm">
             {property.paidInstallments} parcelas pagas • {property.remainingInstallments} restantes

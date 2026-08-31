@@ -49,13 +49,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-200 ${
-        scrolled ? "bg-navy/95 backdrop-blur shadow-md" : "bg-navy"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-200 ${scrolled ? "bg-navy/95 backdrop-blur shadow-md" : "bg-navy"
+        }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="#" className="font-heading text-lg font-bold text-white sm:text-xl">
-          Residencial <span className="text-gold">Parque Firenze</span>
+          Parque <span className="text-gold">Firenze</span>
         </a>
 
         <div className="flex items-center gap-3 sm:gap-4">
@@ -81,9 +80,8 @@ export default function Header() {
       </div>
 
       <div
-        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-200 ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-200 ${open ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
         aria-hidden="true"
         onClick={() => setOpen(false)}
       />
@@ -94,9 +92,8 @@ export default function Header() {
         aria-modal="true"
         aria-label="Menu"
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-xs flex-col overflow-y-auto overscroll-contain bg-navy-dark shadow-xl transition-transform duration-200 sm:max-w-sm ${
-          open ? "visible translate-x-0" : "invisible translate-x-full"
-        }`}
+        className={`fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-xs flex-col overflow-y-auto overscroll-contain bg-navy-dark shadow-xl transition-transform duration-200 sm:max-w-sm ${open ? "visible translate-x-0" : "invisible translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-3">
           <span className="font-heading text-base font-bold text-white">Menu</span>

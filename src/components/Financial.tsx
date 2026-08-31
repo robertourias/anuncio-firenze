@@ -1,15 +1,15 @@
-import { formatCurrency, property } from "@/lib/property";
+import { currentTransferValue, formatCurrency, property, quotaUpdate } from "@/lib/property";
 
 const rows = [
-  { label: "Valor da transferência", value: formatCurrency(property.transferValue) },
+  { label: "Valor da transferência", value: formatCurrency(currentTransferValue) },
   { label: "Parcelas pagas", value: String(property.paidInstallments) },
   { label: "Parcelas restantes", value: String(property.remainingInstallments) },
-  { label: "Parcela atual", value: formatCurrency(property.currentInstallment) },
+  { label: "Parcela atual", value: formatCurrency(quotaUpdate.parcela) },
   { label: "Situação", value: "Não contemplada" },
   { label: "Contemplação", value: "Aguardando sorteio" },
 ];
 
-const estimatedBalance = property.remainingInstallments * property.currentInstallment;
+const estimatedBalance = property.remainingInstallments * quotaUpdate.parcela;
 
 export default function Financial() {
   return (
@@ -38,7 +38,7 @@ export default function Financial() {
 
         <div className="mt-6 rounded-2xl border-2 border-gold/40 bg-white p-6 text-center">
           <p className="font-heading text-2xl font-extrabold text-navy sm:text-3xl">
-            {property.remainingInstallments} × {formatCurrency(property.currentInstallment)} ={" "}
+            {property.remainingInstallments} × {formatCurrency(quotaUpdate.parcela)} ={" "}
             {formatCurrency(estimatedBalance)}
           </p>
           <p className="mt-2 text-sm font-semibold text-gray-500">

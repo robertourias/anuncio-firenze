@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { formatCurrency, property, whatsappMessages } from "@/lib/property";
+import { currentTransferValue, formatCurrency, property, whatsappMessages } from "@/lib/property";
 import WhatsAppButton from "./WhatsAppButton";
 
 const quickInfo = [
@@ -36,7 +36,7 @@ export default function Hero() {
             Cota de 3 dormitórios no Residencial Parque Firenze
           </h1>
 
-          <p className="mt-4 font-heading text-base font-medium text-blue-light sm:text-lg">
+          <p className="mt-4 font-heading text-base font-medium text-white/85 sm:text-lg">
             Grupo {property.group} • Cota {property.quota} • {property.city}
           </p>
 
@@ -72,7 +72,7 @@ export default function Hero() {
                   Valor da transferência
                 </p>
                 <p className="font-heading text-3xl font-extrabold text-navy sm:text-4xl">
-                  {formatCurrency(property.transferValue)}
+                  {formatCurrency(currentTransferValue)}
                 </p>
               </div>
               <span className="rounded-full bg-navy px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-gold">

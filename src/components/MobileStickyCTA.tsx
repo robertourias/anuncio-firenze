@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatCurrency, property, whatsappMessages, buildWhatsAppLink } from "@/lib/property";
+import { buildWhatsAppLink, currentTransferValue, formatCurrency, whatsappMessages } from "@/lib/property";
 
 export default function MobileStickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -26,7 +26,7 @@ export default function MobileStickyCTA() {
           Transferência
         </p>
         <p className="font-heading text-lg font-extrabold text-navy">
-          {formatCurrency(property.transferValue).replace(",00", "")}
+          {formatCurrency(currentTransferValue)}
         </p>
       </div>
       <a
